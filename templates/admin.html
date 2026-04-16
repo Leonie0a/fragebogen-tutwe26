@@ -1,0 +1,9 @@
+<h1>Admin Dashboard</h1>
+
+{% for row in data %}
+    <hr>
+    <p><b>Name:</b> {{ row[1] }}</p>
+    <p><b>Zeit:</b> {{ row[2] }}</p>
+    <p><b>Antworten:</b> {{ row[3] }}</p>
+    <p><b>Ergebnis (%):</b> {{ row[4] }}</p>
+{% endfor %}

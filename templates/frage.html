@@ -1,0 +1,12 @@
+<h2>{{ frage["frage"] }}</h2>
+
+<form method="POST">
+    {% for a in antworten %}
+        <label>
+            <input type="checkbox" name="antwort" value="{{ a['kategorie'] }}">
+            {{ a["text"] }}
+        </label><br>
+    {% endfor %}
+
+    <button type="submit">Weiter</button>
+</form>
