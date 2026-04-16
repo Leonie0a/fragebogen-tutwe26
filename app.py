@@ -183,18 +183,21 @@ def frage():
 # AUSWERTUNG
 # ---------------------------
 def berechne_result(answers):
-    counter = {"Hades":0, "Poseidon":0, "Demeter":0, "Athene":0, "Apollo":0}
+    counter = {
+        "Hades": 0,
+        "Poseidon": 0,
+        "Demeter": 0,
+        "Athene": 0,
+        "Apollo": 0
+    }
 
     for antwort_liste in answers:
         for k in antwort_liste:
-            counter[k] += 1
+            counter[k] = counter.get(k, 0) + 1
 
-    total = sum(counter.values())
-    if total == 0:
-        return counter
-
+    # NICHT normalisieren!
     return {
-        k: round(v / total * 100, 1)
+        k: v * 10
         for k, v in counter.items()
     }
 
