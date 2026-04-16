@@ -1,5 +1,9 @@
 <h2>{{ frage["frage"] }}</h2>
 
+{% if frage["bild"] %}
+    <img src="{{ frage['bild'] }}" style="max-width:300px;">
+{% endif %}
+
 <form method="POST">
     {% for a in antworten %}
         <label>
