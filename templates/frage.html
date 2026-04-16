@@ -7,7 +7,7 @@
 <form method="POST">
     {% for a in antworten %}
         <label>
-            <input type="checkbox" name="antwort" value="{{ a['kategorie'] }}">
+            <input type="radio" name="antwort" value="{{ a['kategorie'] }}" required>
             {{ a["text"] }}
         </label><br>
     {% endfor %}
