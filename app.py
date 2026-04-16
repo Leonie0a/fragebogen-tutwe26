@@ -242,8 +242,10 @@ def dashboard():
 
     conn = sqlite3.connect("daten.db")
     c = conn.cursor()
+
     c.execute("SELECT * FROM results")
-    data = c.fetchall()
+    data = c.fetchall()   # 👈 WICHTIG
+
     conn.close()
 
     return render_template("admin.html", data=data)
