@@ -183,7 +183,7 @@ def frage():
 # AUSWERTUNG
 # ---------------------------
 def berechne_result(answers):
-    counter = {"A":0, "B":0, "C":0, "D":0, "E":0}
+    counter = {"Hades":0, "Poseidon":0, "Demeter":0, "Athene":0, "Apollo":0}
 
     for antwort_liste in answers:
         for k in antwort_liste:
