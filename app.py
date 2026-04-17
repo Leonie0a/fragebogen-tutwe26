@@ -152,6 +152,7 @@ init_db()
 def start():
     if request.method == "POST":
         session["name"] = request.form["name"]
+        session["buddy"] = request.form.get("buddy")  # 👈 NEU
         session["index"] = 0
         session["answers"] = []
         return redirect("/frage")
