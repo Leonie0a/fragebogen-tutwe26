@@ -1,6 +1,83 @@
-<h1>Fragebogen</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<form method="POST">
-    <input name="name" placeholder="Dein Name" required>
-    <button type="submit">Start</button>
-</form>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .box {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .optional {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Finde heraus, welcher Gott du bist</h1>
+
+<div class="box">
+    <form method="POST">
+
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Dein Name" 
+            required
+        >
+
+        <div class="optional">Optional</div>
+
+        <input 
+            type="text" 
+            name="buddy" 
+            placeholder="Buddy (optional)"
+        >
+
+        <button type="submit">Start</button>
+
+    </form>
+</div>
+
+</body>
+</html>
