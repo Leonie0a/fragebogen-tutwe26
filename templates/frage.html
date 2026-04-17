@@ -70,7 +70,7 @@
                 type="{{ 'checkbox' if frage['multi'] else 'radio' }}" 
                 name="antwort" 
                 value="{{ a['kategorie'] }}"
-                required
+                {% if not frage['multi'] %}required{% endif %}
             >
             <div class="answer">
                 {{ a["text"] }}
