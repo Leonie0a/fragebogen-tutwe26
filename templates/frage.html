@@ -1,16 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .answer {
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .answer:hover {
+            background-color: #f5f5f5;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: none;
+        }
+
+        input:checked + .answer {
+            border-color: #4CAF50;
+            background-color: #e8f5e9;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
 <h2>{{ frage["frage"] }}</h2>
 
-{% if frage["bild"] %}
-    <img src="{{ frage['bild'] }}" style="max-width:300px;">
+{% if frage.get("bild") %}
+    <img src="{{ frage['bild'] }}" style="max-width:100%; border-radius:10px; margin-bottom:20px;">
 {% endif %}
 
 <form method="POST">
+
     {% for a in antworten %}
         <label>
-            <input type="radio" name="antwort" value="{{ a['kategorie'] }}" required>
-            {{ a["text"] }}
-        </label><br>
+            <input 
+                type="{{ 'checkbox' if frage['multi'] else 'radio' }}" 
+                name="antwort" 
+                value="{{ a['kategorie'] }}"
+                required
+            >
+            <div class="answer">
+                {{ a["text"] }}
+            </div>
+        </label>
     {% endfor %}
 
     <button type="submit">Weiter</button>
+
 </form>
+
+</body>
+</html>
