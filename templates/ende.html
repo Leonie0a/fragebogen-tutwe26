@@ -1,2 +1,69 @@
-<h1>Danke fürs Ausfüllen!</h1>
-<p>Deine Antworten wurden gespeichert.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .box {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Danke fürs Ausfüllen 🙌</h1>
+
+    <p>
+        <span class="highlight">{{ name }}</span>,  
+        deine Antworten wurden erfolgreich gespeichert.
+    </p>
+
+    <p>
+        Du kannst die Seite jetzt schließen 😊
+    </p>
+
+    <button onclick="location.href='/'">Nochmal starten</button>
+
+</div>
+
+</body>
+</html>
