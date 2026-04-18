@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background: #f5f5f5;
+}
+
+h2 {
+    text-align: center;
+}
+
+.back {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.answer {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.percent {
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Fragen-Auswertung</h2>
+
+<div class="back">
+    <a href="/admin/dashboard">← Zur Tabelle</a>
+    <a href="/admin/cards" style="margin-left:15px;">Ansicht Personen</a>
+</div>
+
+{% for frage, answers in stats.items() %}
+
+<div class="question">
+    <b>{{ frage }}</b>
+
+    <div style="margin-top:10px;">
+        {% for text, data in answers.items() %}
+            <div class="answer">
+                <span>{{ text }} ({{ data.god }})</span>
+                <span class="percent">{{ data.percent }}%</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endfor %}
+
+</body>
+</html>
