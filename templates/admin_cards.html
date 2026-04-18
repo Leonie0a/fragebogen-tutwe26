@@ -84,7 +84,11 @@ h2 {
         {% for a in answers %}
             <div>
                 <b>{{ a.frage }}</b><br>
-                ({{ a.antwort[0] }})
+
+                {% for i in range(a.antwort_text|length) %}
+                    ({{ a.antwort_god[i] }}) {{ a.antwort_text[i] }}<br>
+                {% endfor %}
+
             </div>
             <br>
         {% endfor %}
