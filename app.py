@@ -286,5 +286,32 @@ def reset():
     return redirect("/admin/dashboard")
 
 # ---------------------------
+# ADMIN CARDS
+# ---------------------------
+@app.route("/admin/cards")
+def cards():
+    if not session.get("admin"):
+        return redirect("/admin")
+
+    conn = sqlite3.connect("daten.db")
+    c = conn.cursor()
+    c.execute("SELECT name, buddy, time, result FROM results")
+    rows = c.fetchall()
+    conn.close()
+
+    import ast
+
+    data = []
+    for r in rows:
+        name = r[0]
+        buddy = r[1]
+        time = r[2]
+        result = ast.literal_eval(r[3])
+        data.append((name, buddy, time, result))
+
+    return render_template("admin_cards.html", data=data)
+    
+
+# ---------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
