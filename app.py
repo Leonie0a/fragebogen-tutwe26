@@ -401,7 +401,65 @@ def export_excel():
         mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         headers={"Content-Disposition": "attachment;filename=ergebnisse.xlsx"}
     )
-    
+
+
+# ---------------------------
+# ADMIN FRAGEN AUSWERTUNG
+# ---------------------------
+@app.route("/admin/fragen")
+def admin_fragen():
+    if not session.get("admin"):
+        return redirect("/admin")
+
+    conn = sqlite3.connect("daten.db")
+    c = conn.cursor()
+    c.execute("SELECT answers FROM results")
+    rows = c.fetchall()
+    conn.close()
+
+    # 🔢 Zähler vorbereiten
+    stats = {}
+
+    for f in fragen:
+        stats[f["frage"]] = {}
+        for a in f["antworten"]:
+            stats[f["frage"]][a["text"]] = {
+                "god": a["kategorie"],
+                "count": 0
+            }
+
+    total_people = len(rows)
+
+    # 🔢 Antworten zählen
+    for r in rows:
+        try:
+            answers = ast.literal_eval(r[0])
+        except:
+            continue
+
+        for entry in answers:
+            frage_text = entry["frage"]
+
+            for s in entry["selected"]:
+                answer_text = s["text"]
+
+                if frage_text in stats and answer_text in stats[frage_text]:
+                    stats[frage_text][answer_text]["count"] += 1
+
+    # 📊 Prozent berechnen
+    for frage_text in stats:
+        for answer_text in stats[frage_text]:
+            count = stats[frage_text][answer_text]["count"]
+
+            if total_people > 0:
+                percent = round(count / total_people * 100, 1)
+            else:
+                percent = 0
+
+            stats[frage_text][answer_text]["percent"] = percent
+
+    return render_template("admin_fragen.html", stats=stats)
+
 # ---------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
