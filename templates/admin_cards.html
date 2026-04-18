@@ -33,15 +33,16 @@ h2 {
     margin-bottom: 10px;
 }
 
-.row {
-    line-height: 1.6;
+.god {
+    margin: 3px 0;
 }
 
-.winner {
-    background: #c8f7c5;
-    padding: 2px 6px;
-    border-radius: 5px;
-    font-weight: bold;
+.answers {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
 }
 </style>
 
@@ -55,9 +56,9 @@ h2 {
     <a href="/admin/dashboard">← Zur Tabelle</a>
 </div>
 
-{% for name, buddy, time, result in data %}
+{% for name, buddy, time, result, answers in data %}
 
-{% set max_value = result.values() | max %}
+{% set sorted_gods = result.items() | sort(attribute=1, reverse=True) %}
 
 <div class="card">
 
@@ -69,15 +70,24 @@ h2 {
 
     <div class="meta">{{ time }}</div>
 
-    <div class="row">
+    <!-- 🧠 SORTIERTE ERGEBNISSE -->
+    <div style="margin-top:10px;">
+        {% for god, value in sorted_gods %}
+            <div class="god">
+                {{ god }}: {{ value }}%
+            </div>
+        {% endfor %}
+    </div>
 
-        Zeus: <span class="{% if result['Zeus'] == max_value %}winner{% endif %}">{{ result['Zeus'] }}%</span><br>
-        Athene: <span class="{% if result['Athene'] == max_value %}winner{% endif %}">{{ result['Athene'] }}%</span><br>
-        Poseidon: <span class="{% if result['Poseidon'] == max_value %}winner{% endif %}">{{ result['Poseidon'] }}%</span><br>
-        Demeter: <span class="{% if result['Demeter'] == max_value %}winner{% endif %}">{{ result['Demeter'] }}%</span><br>
-        Hades: <span class="{% if result['Hades'] == max_value %}winner{% endif %}">{{ result['Hades'] }}%</span><br>
-        Apollo: <span class="{% if result['Apollo'] == max_value %}winner{% endif %}">{{ result['Apollo'] }}%</span>
-
+    <!-- 📝 ANTWORTEN -->
+    <div class="answers">
+        {% for a in answers %}
+            <div>
+                <b>{{ a.frage }}</b><br>
+                ({{ a.antwort[0] }})
+            </div>
+            <br>
+        {% endfor %}
     </div>
 
 </div>
