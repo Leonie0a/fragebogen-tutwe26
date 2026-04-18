@@ -184,7 +184,10 @@ def frage():
         if not selected:
             return render_template("frage.html", frage=frage, antworten=antworten, error="Bitte wähle eine Antwort")
 
-        session["answers"].append(selected)
+        session["answers"].append({
+            "frage": frage["frage"],
+            "antwort": selected
+        })
         session["index"] = i + 1
         return redirect("/frage")
 
@@ -307,7 +310,7 @@ def cards():
         buddy = r[1]
         time = r[2]
         result = ast.literal_eval(r[3])
-        data.append((name, buddy, time, result))
+        data.append((name, buddy, time, result, ast.literal_eval(r[4])))
 
     return render_template("admin_cards.html", data=data)
     
