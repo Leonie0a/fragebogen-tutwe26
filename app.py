@@ -251,12 +251,18 @@ def dashboard():
     c.execute("SELECT name, buddy, time, result FROM results")
     rows = c.fetchall()
 
+    conn.close()
+
+    import ast
+
     data = []
     for r in rows:
-        result_dict = ast.literal_eval(r[3])  # String → Dict
-        data.append((r[0], r[1], r[2], result_dict))
+        name = r[0]
+        buddy = r[1]
+        time = r[2]
+        result = ast.literal_eval(r[3])
 
-    conn.close()
+        data.append((name, buddy, time, result))
 
     return render_template("admin.html", data=data)
 
