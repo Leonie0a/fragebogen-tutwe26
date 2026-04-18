@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import random
 import sqlite3
 import datetime
+import ast
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -247,8 +248,13 @@ def dashboard():
     conn = sqlite3.connect("daten.db")
     c = conn.cursor()
 
-    c.execute("SELECT * FROM results")
-    data = c.fetchall()   # 👈 WICHTIG
+    c.execute("SELECT name, buddy, time, result FROM results")
+    rows = c.fetchall()
+
+    data = []
+    for r in rows:
+        result_dict = ast.literal_eval(r[3])  # String → Dict
+        data.append((r[0], r[1], r[2], result_dict))
 
     conn.close()
 
