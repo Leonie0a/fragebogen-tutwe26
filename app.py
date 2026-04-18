@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, Response
 import random
 import sqlite3
 import datetime
 import ast
+from openpyxl import Workbook
+from openpyxl.styles import PatternFill
+import io
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -337,6 +340,68 @@ def cards():
     return render_template("admin_cards.html", data=data)
     
 
+# ---------------------------
+# EXCEL
+# ---------------------------
+
+@app.route("/admin/export")
+def export_excel():
+    if not session.get("admin"):
+        return redirect("/admin")
+
+    conn = sqlite3.connect("daten.db")
+    c = conn.cursor()
+    c.execute("SELECT name, buddy, result FROM results")
+    rows = c.fetchall()
+    conn.close()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Ergebnisse"
+
+    gods = ["Zeus", "Athene", "Poseidon", "Demeter", "Hades", "Apollo"]
+
+    # Header
+    ws.append(["Name"] + gods + ["Buddy"])
+
+    green_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
+
+    for r in rows:
+        name = r[0]
+        buddy = r[1]
+
+        result = ast.literal_eval(r[2])
+
+        row_values = [name]
+        max_value = max(result.values()) if result else 0
+
+        # Gott-Werte
+        for g in gods:
+            row_values.append(result.get(g, 0))
+
+        row_values.append(buddy)
+
+        ws.append(row_values)
+
+        # 🔥 Grün markieren (höchster Wert)
+        row_index = ws.max_row
+
+        for col_index, g in enumerate(gods, start=2):
+            cell = ws.cell(row=row_index, column=col_index)
+
+            if cell.value == max_value and max_value > 0:
+                cell.fill = green_fill
+
+    output = io.BytesIO()
+    wb.save(output)
+    output.seek(0)
+
+    return Response(
+        output,
+        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        headers={"Content-Disposition": "attachment;filename=ergebnisse.xlsx"}
+    )
+    
 # ---------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
