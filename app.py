@@ -222,10 +222,12 @@ def berechne_result(answers):
     }
 
     for eintrag in answers:
-        antworten = eintrag.get("antwort", [])
+        antworten = eintrag.get("selected", [])
 
-        for k in antworten:
-            counter[k] = counter.get(k, 0) + 1
+        for a in antworten:
+            god = a.get("god")
+            if god:
+                counter[god] += 1
 
     return {k: v * 10 for k, v in counter.items()}
 
