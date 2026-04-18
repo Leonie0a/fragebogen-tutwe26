@@ -205,8 +205,10 @@ def berechne_result(answers):
         "Apollo": 0
     }
 
-    for antwort_liste in answers:
-        for k in antwort_liste:
+    for eintrag in answers:
+        antworten = eintrag.get("antwort", [])
+
+        for k in antworten:
             counter[k] = counter.get(k, 0) + 1
 
     return {k: v * 10 for k, v in counter.items()}
@@ -298,7 +300,7 @@ def cards():
 
     conn = sqlite3.connect("daten.db")
     c = conn.cursor()
-    c.execute("SELECT name, buddy, time, result FROM results")
+    c.execute("SELECT name, buddy, time, result, answers FROM results")
     rows = c.fetchall()
     conn.close()
 
@@ -310,7 +312,9 @@ def cards():
         buddy = r[1]
         time = r[2]
         result = ast.literal_eval(r[3])
-        data.append((name, buddy, time, result, ast.literal_eval(r[4])))
+        answers = ast.literal_eval(r[4])
+
+        data.append((name, buddy, time, result, answers))
 
     return render_template("admin_cards.html", data=data)
     
