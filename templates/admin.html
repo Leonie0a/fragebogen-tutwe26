@@ -1,9 +1,101 @@
-<h1>Admin Dashboard</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% for row in data %}
-    <hr>
-    <p><b>Name:</b> {{ row[1] }}</p>
-    <p><b>Zeit:</b> {{ row[2] }}</p>
-    <p><b>Antworten:</b> {{ row[3] }}</p>
-    <p><b>Ergebnis (%):</b> {{ row[4] }}</p>
-{% endfor %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background: #f5f5f5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: #222;
+    color: white;
+    font-size: 13px;
+}
+
+.left {
+    text-align: left;
+    font-size: 13px;
+}
+
+.winner {
+    background: #c8f7c5;
+    font-weight: bold;
+}
+
+.row-block {
+    line-height: 1.4;
+}
+
+/* Mobile Scroll */
+.wrapper {
+    overflow-x: auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Admin Dashboard</h2>
+
+<div class="wrapper">
+
+<table>
+    <tr>
+        <th>Person</th>
+        <th>Zeus</th>
+        <th>Athene</th>
+        <th>Poseidon</th>
+        <th>Demeter</th>
+        <th>Hades</th>
+        <th>Apollo</th>
+    </tr>
+
+    {% for name, buddy, time, result in data %}
+
+    {% set max_value = result.values() | max %}
+
+    <tr>
+        <td class="left">
+            <div class="row-block">
+                <b>{{ name }}</b><br>
+                {% if buddy %}{{ buddy }}<br>{% endif %}
+                {{ time }}
+            </div>
+        </td>
+
+        {% for god in ["Zeus","Athene","Poseidon","Demeter","Hades","Apollo"] %}
+            {% set value = result.get(god, 0) %}
+            <td class="{% if value == max_value and max_value > 0 %}winner{% endif %}">
+                {{ value }}%
+            </td>
+        {% endfor %}
+
+    </tr>
+
+    {% endfor %}
+</table>
+
+</div>
+
+</body>
+</html>
