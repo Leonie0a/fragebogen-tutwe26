@@ -51,10 +51,10 @@ fragen = [
         "frage": "Such dir ein Abenteuer aus:",
         "multi": False,
         "antworten": [
-            {"text": "Du betrittst ein dunkles menschenverlassenes Geisterhaus. Du versuchst durch die verschlossene Stahlgittertür zu öffnen um in den Keller zu gelangen, damit du endlich deine Karriere als Geisterjäger*in starten kannst. Eine deiner inneren Stimmen singt schaurig: Ghostbusters!", "kategorie": "Hades"},
-            {"text": "Die Planke wackelt unter deinen Füßen. Die meterhohen Wellen machen dir nichts aus, als du mit sicheren Schritten die Planke zum anderen Schiff überquerst. Mit einem lauten “Ahoi! Alles im Lot auf dem Boot” verwirrst du die Person die dir mit einem Säbel gegenübersteht und…", "kategorie": "Poseidon"},
+            {"text": "Du betrittst ein dunkles menschenverlassenes Geisterhaus. Du versuchst die verschlossene Stahlgittertür zu öffnen um in den Keller zu gelangen, damit du endlich deine Karriere als Geisterjäger*in starten kannst. Eine deiner inneren Stimmen singt schaurig: Ghostbusters!", "kategorie": "Hades"},
+            {"text": "Die Planke wackelt unter deinen Füßen. Die meterhohen Wellen machen dir nichts aus, als du mit sicheren Schritten die Planke zum anderen Schiff überquerst. Mit einem lauten “Ahoi! Alles im Lot auf dem Boot?” verwirrst du die Person, die dir mit einem Säbel gegenübersteht und…", "kategorie": "Poseidon"},
             {"text": "Du läufst zielstrebig den langen heruntergekommenen Tunnel entlang. Um etwas zu sehen fragst du die Glühwürchen nach Hilfe. Gerade als sie mit Ihrem Tanz beginnen sieht du wie sich hinter dir eine geheime Tür öffnet. Von drinnen hörst du die Gummibärenbande und stimmst freudig in ihr Lied mit ein.", "kategorie": "Demeter"},
-            {"text": "Den hörst von Weitem ein lautes Schnaufen und freust dich bereits darauf, dass er gleich in deine Falle tappen wird. Seit Ewigkeiten hat es niemand geschafft ihn zu fangen und du wirst nun die erste Person sein die ihn zu Gesicht bekommt. Du stimmst bereits dein Siegeslied an: Hey Hey yippie, hey, yippie, hey…", "kategorie": "Athene"},
+            {"text": "Du hörst von Weitem ein lautes Schnaufen und freust dich bereits darauf, dass er gleich in deine Falle tappen wird. Seit Ewigkeiten hat es niemand geschafft ihn zu fangen und du wirst nun die erste Person sein die ihn zu Gesicht bekommt. Du stimmst bereits dein Siegeslied an: Hey Hey yippie, hey, yippie, hey…", "kategorie": "Athene"},
             {"text": "Du merkst den Druck auf deiner Brust und dir schwinden fast die Sinne. Du wirst immer höher und höher getragen. Im Rückspiegel siehst du die Welt immer kleiner und kleiner werden. Du spürst erst jetzt wie bedeutend dein Leben sein wird, während du zu neuen Welten aufbrichst. Durch die Lautsprecher erklingt der Gesang: “oohh yeahh yeah I′m your basic average girl And I’m here to save the world”", "kategorie": "Apollo"},
         ]
     },
@@ -86,7 +86,7 @@ fragen = [
         "antworten": [
             {"text": "Ich bin nie zu spät, alle anderen sind einfach zu früh.", "kategorie": "Hades"},
             {"text": "Meine Geschwister sind schuld!", "kategorie": "Poseidon"},
-            {"text": "Ich habe einer Igel-oma über die Straße geholfen.", "kategorie": "Demeter"},
+            {"text": "Ich habe einer Igel-Oma über die Straße geholfen.", "kategorie": "Demeter"},
             {"text": "Was ist “zu spät kommen”?", "kategorie": "Athene"},
             {"text": "Musste zurück, habe meine Sonnenbrille vergessen.", "kategorie": "Apollo"},
         ]
@@ -268,6 +268,22 @@ def dashboard():
         data.append((r[0], r[1], r[2], result))
 
     return render_template("admin.html", data=data)
+
+# ---------------------------
+# ADMIN RESET
+# ---------------------------
+@app.route("/admin/reset", methods=["POST"])
+def reset():
+    if not session.get("admin"):
+        return redirect("/admin")
+
+    conn = sqlite3.connect("daten.db")
+    c = conn.cursor()
+    c.execute("DELETE FROM results")
+    conn.commit()
+    conn.close()
+
+    return redirect("/admin/dashboard")
 
 # ---------------------------
 if __name__ == "__main__":
