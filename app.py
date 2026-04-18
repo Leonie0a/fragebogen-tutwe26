@@ -359,7 +359,7 @@ def export_excel():
     ws = wb.active
     ws.title = "Ergebnisse"
 
-    gods = ["Zeus", "Athene", "Poseidon", "Demeter", "Hades", "Apollo"]
+    gods = ["Athene", "Poseidon", "Demeter", "Hades", "Apollo"]
 
     # Header
     ws.append(["Name"] + gods + ["Buddy"])
