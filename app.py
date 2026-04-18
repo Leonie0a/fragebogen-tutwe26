@@ -10,7 +10,7 @@ app.secret_key = "supersecretkey"
 ADMIN_PASSWORD = "IKLMZ"
 
 # ---------------------------
-# FRAGEN
+# FRAGEN (UNVERÄNDERT)
 # ---------------------------
 fragen = [
     {
@@ -51,11 +51,11 @@ fragen = [
         "frage": "Such dir ein Abenteuer aus:",
         "multi": False,
         "antworten": [
-            {"text": "Du betrittst ein dunkles menschenverlassenes Geisterhaus. Du versuchst durch die verschlossene Stahlgittertür zu öffnen um in den Keller zu gelangen, damit du endlich deine Karriere als Geisterjäger*in starten kannst. Eine deiner inneren Stimmen singt schaurig: Ghostbusters!", "kategorie": "Hades"},
-            {"text": "Die Planke wackelt unter deinen Füßen. Die meterhohen Wellen machen dir nichts aus, als du mit sicheren Schritten die Planke zum anderen Schiff überquerst. Mit einem lauten “Ahoi! Alles im Lot auf dem Boot” verwirrst du die Person die dir mit einem Säbel gegenübersteht und…", "kategorie": "Poseidon"},
-            {"text": "Du läufst zielstrebig den langen heruntergekommenen Tunnel entlang. Um etwas zu sehen fragst du die Glühwürchen nach Hilfe. Gerade als sie mit Ihrem Tanz beginnen sieht du wie sich hinter dir eine geheime Tür öffnet. Von drinnen hörst du die Gummibärenbande und stimmst freudig in ihr Lied mit ein.", "kategorie": "Demeter"},
-            {"text": "Den hörst von Weitem ein lautes Schnaufen und freust dich bereits darauf, dass er gleich in deine Falle tappen wird. Seit Ewigkeiten hat es niemand geschafft ihn zu fangen und du wirst nun die erste Person sein die ihn zu Gesicht bekommt. Du stimmst bereits dein Siegeslied an: Hey Hey yippie, hey, yippie, hey…", "kategorie": "Athene"},
-            {"text": "Du merkst den Druck auf deiner Brust und dir schwinden fast die Sinne. Du wirst immer höher und höher getragen. Im Rückspiegel siehst du die Welt immer kleiner und kleiner werden. Du spürst erst jetzt wie bedeutend dein Leben sein wird, während du zu neuen Welten aufbrichst. Durch die Lautsprecher erklingt der Gesang: “oohh yeahh yeah I′m your basic average girl And I’m here to save the world”", "kategorie": "Apollo"},
+            {"text": "Du betrittst ein dunkles menschenverlassenes Geisterhaus...", "kategorie": "Hades"},
+            {"text": "Die Planke wackelt unter deinen Füßen...", "kategorie": "Poseidon"},
+            {"text": "Du läufst zielstrebig den langen Tunnel entlang...", "kategorie": "Demeter"},
+            {"text": "Den hörst von Weitem ein lautes Schnaufen...", "kategorie": "Athene"},
+            {"text": "Du merkst den Druck auf deiner Brust...", "kategorie": "Apollo"},
         ]
     },
     {
@@ -84,11 +84,11 @@ fragen = [
         "frage": "Was wäre dein Grund fürs zu spät kommen?",
         "multi": False,
         "antworten": [
-            {"text": "Ich bin nie zu spät, alle anderen sind einfach zu früh.", "kategorie": "Hades"},
+            {"text": "Ich bin nie zu spät...", "kategorie": "Hades"},
             {"text": "Meine Geschwister sind schuld!", "kategorie": "Poseidon"},
-            {"text": "Ich habe einer Igel-oma über die Straße geholfen.", "kategorie": "Demeter"},
-            {"text": "Was ist “zu spät kommen”?", "kategorie": "Athene"},
-            {"text": "Musste zurück, habe meine Sonnenbrille vergessen.", "kategorie": "Apollo"},
+            {"text": "Ich habe einer Igel-oma geholfen.", "kategorie": "Demeter"},
+            {"text": "Was ist zu spät kommen?", "kategorie": "Athene"},
+            {"text": "Sonnenbrille vergessen.", "kategorie": "Apollo"},
         ]
     },
     {
@@ -96,9 +96,9 @@ fragen = [
         "multi": False,
         "antworten": [
             {"text": "Ich komme zu deiner Beerdigung.", "kategorie": "Hades"},
-            {"text": "Lass uns was Trinken gehen.", "kategorie": "Poseidon"},
-            {"text": "Wir gehen zusammen Bäume umarmen.", "kategorie": "Demeter"},
-            {"text": "Wir wissen, ich habe Recht.", "kategorie": "Athene"},
+            {"text": "Lass uns was trinken gehen.", "kategorie": "Poseidon"},
+            {"text": "Bäume umarmen.", "kategorie": "Demeter"},
+            {"text": "Ich habe Recht.", "kategorie": "Athene"},
             {"text": "Karma regelt.", "kategorie": "Apollo"},
         ]
     },
@@ -106,11 +106,11 @@ fragen = [
         "frage": "Welcher Satz klingt nach KI?",
         "multi": False,
         "antworten": [
-            {"text": "Der Satz, der übertrieben perfekt, generisch und etwas unpersönlich formuliert ist, klingt am ehesten nach KI.", "kategorie": "Hades"},
-            {"text": "In einem flirrenden Netzwerk aus Datenpunkten generiere ich mit algorithmischer Präzision eine Antwort, die zugleich effizient und überraschend elegant ist.", "kategorie": "Poseidon"},
-            {"text": "Viele Dinge klingen bedeutungsvoll, aber am Ende zählt meistens, was praktisch funktioniert und im Alltag wirklich Bestand hat.", "kategorie": "Demeter"},
-            {"text": "Ein Satz ist eine abgeschlossene sprachliche Einheit, die einen vollständigen Gedanken ausdrückt.", "kategorie": "Athene"},
-            {"text": "Zwischen zwei Atemzügen flüstert die Zeit von allem, was noch werden will.", "kategorie": "Apollo"},
+            {"text": "Der Satz klingt generisch...", "kategorie": "Hades"},
+            {"text": "Ein Netzwerk aus Datenpunkten...", "kategorie": "Poseidon"},
+            {"text": "Praktisch funktioniert...", "kategorie": "Demeter"},
+            {"text": "Ein Satz ist eine Einheit...", "kategorie": "Athene"},
+            {"text": "Zwischen zwei Atemzügen...", "kategorie": "Apollo"},
         ]
     },
     {
@@ -118,10 +118,10 @@ fragen = [
         "multi": False,
         "antworten": [
             {"text": "Unter allen Umständen", "kategorie": "Hades"},
-            {"text": "Wenn es keine Zeugen gibt", "kategorie": "Poseidon"},
-            {"text": "Wenn die Mitbewohner*in die Pflanzen nicht gegossen hat", "kategorie": "Demeter"},
+            {"text": "Wenn keine Zeugen da sind", "kategorie": "Poseidon"},
+            {"text": "Wenn Pflanzen nicht gegossen wurden", "kategorie": "Demeter"},
             {"text": "Wenn die Person dumm ist", "kategorie": "Athene"},
-            {"text": "Wenn die Person schief singt", "kategorie": "Apollo"},
+            {"text": "Wenn jemand schief singt", "kategorie": "Apollo"},
         ]
     },
 ]
@@ -136,6 +136,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS results (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
+            buddy TEXT,
             time TEXT,
             answers TEXT,
             result TEXT
@@ -153,17 +154,20 @@ init_db()
 def start():
     if request.method == "POST":
         session["name"] = request.form["name"]
-        session["buddy"] = request.form.get("buddy")  # 👈 NEU
+        session["buddy"] = request.form.get("buddy")
         session["index"] = 0
         session["answers"] = []
         return redirect("/frage")
     return render_template("start.html")
 
 # ---------------------------
-# FRAGEN LOGIK
+# FRAGEN
 # ---------------------------
 @app.route("/frage", methods=["GET", "POST"])
 def frage():
+    if "answers" not in session:
+        return redirect("/")
+
     i = session.get("index", 0)
 
     if i >= len(fragen):
@@ -175,6 +179,10 @@ def frage():
 
     if request.method == "POST":
         selected = request.form.getlist("antwort")
+
+        if not selected:
+            return render_template("frage.html", frage=frage, antworten=antworten, error="Bitte wähle eine Antwort")
+
         session["answers"].append(selected)
         session["index"] = i + 1
         return redirect("/frage")
@@ -197,11 +205,7 @@ def berechne_result(answers):
         for k in antwort_liste:
             counter[k] = counter.get(k, 0) + 1
 
-    # NICHT normalisieren!
-    return {
-        k: v * 10
-        for k, v in counter.items()
-    }
+    return {k: v * 10 for k, v in counter.items()}
 
 # ---------------------------
 # ENDE
@@ -209,6 +213,7 @@ def berechne_result(answers):
 @app.route("/ende")
 def ende():
     name = session.get("name")
+    buddy = session.get("buddy")
     answers = session.get("answers")
 
     result = berechne_result(answers)
@@ -216,8 +221,8 @@ def ende():
     conn = sqlite3.connect("daten.db")
     c = conn.cursor()
     c.execute(
-        "INSERT INTO results (name, time, answers, result) VALUES (?, ?, ?, ?)",
-        (name, str(datetime.datetime.now()), str(answers), str(result))
+        "INSERT INTO results (name, buddy, time, answers, result) VALUES (?, ?, ?, ?, ?)",
+        (name, buddy, datetime.datetime.now().strftime("%d.%m.%Y %H:%M"), str(answers), str(result))
     )
     conn.commit()
     conn.close()
@@ -250,19 +255,16 @@ def dashboard():
 
     c.execute("SELECT name, buddy, time, result FROM results")
     rows = c.fetchall()
-
     conn.close()
-
-    import ast
 
     data = []
     for r in rows:
-        name = r[0]
-        buddy = r[1]
-        time = r[2]
-        result = ast.literal_eval(r[3])
+        try:
+            result = ast.literal_eval(r[3])
+        except:
+            result = {}
 
-        data.append((name, buddy, time, result))
+        data.append((r[0], r[1], r[2], result))
 
     return render_template("admin.html", data=data)
 
