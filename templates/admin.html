@@ -117,7 +117,6 @@ th {
 <table>
     <tr>
         <th>Person</th>
-        <th>Zeus</th>
         <th>Athene</th>
         <th>Poseidon</th>
         <th>Demeter</th>
@@ -145,7 +144,7 @@ th {
         </td>
 
         <!-- VALUES -->
-        {% for god in ["Zeus","Athene","Poseidon","Demeter","Hades","Apollo"] %}
+        {% for god in ["Athene","Poseidon","Demeter","Hades","Apollo"] %}
             {% set value = result.get(god, 0) %}
 
             <td class="{% if value == max_value and max_value > 0 %}winner{% endif %}">
