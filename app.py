@@ -182,20 +182,26 @@ def frage():
         selected = request.form.getlist("antwort")
 
         if not selected:
-            return render_template("frage.html", frage=frage, antworten=antworten, error="Bitte wähle eine Antwort")
+            return render_template(
+                "frage.html",
+                frage=frage,
+                antworten=antworten,
+                error="Bitte wähle eine Antwort"
+            )
 
-        chosen_texts = []
-        chosen_gods = []
+        # 🔥 WICHTIG: wir speichern TEXT + KATEGORIE sauber getrennt
+        chosen = []
 
         for a in frage["antworten"]:
             if a["kategorie"] in selected:
-                chosen_texts.append(a["text"])
-                chosen_gods.append(a["kategorie"])
+                chosen.append({
+                    "god": a["kategorie"],
+                    "text": a["text"]
+                })
 
         session["answers"].append({
             "frage": frage["frage"],
-            "antwort_text": chosen_texts,
-            "antwort_god": chosen_gods
+            "selected": chosen
         })
 
         session["index"] = i + 1
