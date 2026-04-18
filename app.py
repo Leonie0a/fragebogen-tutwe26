@@ -184,10 +184,20 @@ def frage():
         if not selected:
             return render_template("frage.html", frage=frage, antworten=antworten, error="Bitte wähle eine Antwort")
 
+        chosen_texts = []
+        chosen_gods = []
+
+        for a in frage["antworten"]:
+            if a["kategorie"] in selected:
+                chosen_texts.append(a["text"])
+                chosen_gods.append(a["kategorie"])
+
         session["answers"].append({
             "frage": frage["frage"],
-            "antwort": selected
+            "antwort_text": chosen_texts,
+            "antwort_god": chosen_gods
         })
+
         session["index"] = i + 1
         return redirect("/frage")
 
