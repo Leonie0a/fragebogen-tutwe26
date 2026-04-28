@@ -18,7 +18,7 @@ ADMIN_PASSWORD = "IKLMZ"
 fragen = [
     {
         "frage": "Als welches Tier willst du wiedergeboren werden?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Hund", "kategorie": "Hades"},
             {"text": "Pferd", "kategorie": "Poseidon"},
@@ -30,7 +30,7 @@ fragen = [
     {
         "frage": "Was siehst du in diesem Bild?",
         "bild": "/static/gerald.jpg",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Skorpion", "kategorie": "Hades"},
             {"text": "Fisch", "kategorie": "Poseidon"},
@@ -41,7 +41,7 @@ fragen = [
     },
     {
         "frage": "Was hättest du am liebsten als useless talent?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Galgenmännchen", "kategorie": "Hades"},
             {"text": "Luft anhalten", "kategorie": "Poseidon"},
@@ -52,7 +52,7 @@ fragen = [
     },
     {
         "frage": "Such dir ein Abenteuer aus:",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Du betrittst ein dunkles menschenverlassenes Geisterhaus. Du versuchst die verschlossene Stahlgittertür zu öffnen um in den Keller zu gelangen, damit du endlich deine Karriere als Geisterjäger*in starten kannst. Eine deiner inneren Stimmen singt schaurig: Ghostbusters!", "kategorie": "Hades"},
             {"text": "Die Planke wackelt unter deinen Füßen. Die meterhohen Wellen machen dir nichts aus, als du mit sicheren Schritten die Planke zum anderen Schiff überquerst. Mit einem lauten “Ahoi! Alles im Lot auf dem Boot?” verwirrst du die Person, die dir mit einem Säbel gegenübersteht und…", "kategorie": "Poseidon"},
@@ -63,7 +63,7 @@ fragen = [
     },
     {
         "frage": "Weche Stadt würdest du zerstören?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Welche nicht?", "kategorie": "Hades"},
             {"text": "Dubai und Athen", "kategorie": "Poseidon"},
@@ -74,7 +74,7 @@ fragen = [
     },
     {
         "frage": "Was ist dein Lieblingsschulfach?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Batman Geschichte", "kategorie": "Hades"},
             {"text": "Schwimmunterricht", "kategorie": "Poseidon"},
@@ -85,7 +85,7 @@ fragen = [
     },
     {
         "frage": "Was wäre dein Grund fürs zu spät kommen?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Ich bin nie zu spät, alle anderen sind einfach zu früh.", "kategorie": "Hades"},
             {"text": "Meine Geschwister sind schuld!", "kategorie": "Poseidon"},
@@ -96,7 +96,7 @@ fragen = [
     },
     {
         "frage": "Wie verhälst du dich nach Streit?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Ich komme zu deiner Beerdigung.", "kategorie": "Hades"},
             {"text": "Lass uns was Trinken gehen.", "kategorie": "Poseidon"},
@@ -106,8 +106,8 @@ fragen = [
         ]
     },
     {
-        "frage": "Welcher Satz klingt nach KI?",
-        "multi": False,
+        "frage": "Welcher Satz klingt nicht nach KI?",
+        "multi": True,
         "antworten": [
             {"text": "Der Satz, der übertrieben perfekt, generisch und etwas unpersönlich formuliert ist, klingt am ehesten nach KI.", "kategorie": "Hades"},
             {"text": "In einem flirrenden Netzwerk aus Datenpunkten generiere ich mit algorithmischer Präzision eine Antwort, die zugleich effizient und überraschend elegant ist.", "kategorie": "Poseidon"},
@@ -118,7 +118,7 @@ fragen = [
     },
     {
         "frage": "Unter welchen Umständen ist ein Mord okay?",
-        "multi": False,
+        "multi": True,
         "antworten": [
             {"text": "Unter allen Umständen", "kategorie": "Hades"},
             {"text": "Wenn es keine Zeugen gibt", "kategorie": "Poseidon"},
