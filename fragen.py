@@ -12,7 +12,7 @@ fragen = [
     },
     {
         "frage": "Was siehst du in diesem Bild?",
-        "bild": "/static/gerald.jpg",
+        "bild": "/statics/gerald.jpg",
         "multi": True,
         "antworten": [
             {"text": "Skorpion", "kategorie": "Hades"},
