@@ -45,7 +45,7 @@ fragen = [
         ]
     },
     {
-        "frage": "Weche Stadt würdest du zerstören?",
+        "frage": "Welche Stadt würdest du zerstören?",
         "multi": True,
         "antworten": [
             {"text": "Welche nicht?", "kategorie": "Hades"},
@@ -67,7 +67,7 @@ fragen = [
         ]
     },
     {
-        "frage": "Was wäre dein Grund fürs zu spät kommen?",
+        "frage": "Was wäre dein Grund fürs Zuspätkommen?",
         "multi": True,
         "antworten": [
             {"text": "Ich bin nie zu spät, alle anderen sind einfach zu früh.", "kategorie": "Hades"},
@@ -78,7 +78,7 @@ fragen = [
         ]
     },
     {
-        "frage": "Wie verhälst du dich nach Streit?",
+        "frage": "Wie verhältst du dich nach einem Streit?",
         "multi": True,
         "antworten": [
             {"text": "Ich komme zu deiner Beerdigung.", "kategorie": "Hades"},
