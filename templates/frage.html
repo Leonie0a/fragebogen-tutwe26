@@ -58,6 +58,12 @@
 
 <h2>{{ frage["frage"] }}</h2>
 
+{% if frage['multi'] %}
+    <p style="font-size: 13px; color: gray; margin-top: -10px;">
+        Mehrfachauswahl möglich
+    </p>
+{% endif %}
+
 {% if frage.get("bild") %}
     <img src="{{ frage['bild'] }}" style="max-width:100%; border-radius:10px; margin-bottom:20px;">
 {% endif %}
