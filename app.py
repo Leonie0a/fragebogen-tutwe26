@@ -45,6 +45,7 @@ def start():
         session["buddy"] = request.form.get("buddy")
         session["index"] = 0
         session["answers"] = []
+        session["saved"] = False
         return redirect("/frage")
     return render_template("start.html")
 
@@ -123,6 +124,10 @@ def berechne_result(answers):
 # ---------------------------
 @app.route("/ende")
 def ende():
+    # 🔥 Schon gespeichert?
+    if session.get("saved"):
+        return render_template("ende.html")
+
     name = session.get("name")
     buddy = session.get("buddy")
     answers = session.get("answers")
@@ -131,12 +136,23 @@ def ende():
 
     conn = sqlite3.connect("daten.db")
     c = conn.cursor()
+
     c.execute(
         "INSERT INTO results (name, buddy, time, answers, result) VALUES (?, ?, ?, ?, ?)",
-        (name, buddy, datetime.datetime.now().strftime("%d.%m.%Y %H:%M"), str(answers), str(result))
+        (
+            name,
+            buddy,
+            datetime.datetime.now().strftime("%d.%m.%Y %H:%M"),
+            str(answers),
+            str(result)
+        )
     )
+
     conn.commit()
     conn.close()
+
+    # 🔥 markieren als gespeichert
+    session["saved"] = True
 
     return render_template("ende.html")
 
