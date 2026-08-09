@@ -142,6 +142,7 @@ def ende():
         (
             name,
             buddy,
+            datetime.datetime.now().strftime("%d.%m.%Y %H:%M"),
             (datetime.datetime.now() + datetime.timedelta(hours=2)).strftime("%d.%m.%Y %H:%M"),
             str(answers),
             str(result)
@@ -238,7 +239,7 @@ def cards():
         data.append((name, buddy, time, result, answers))
 
     return render_template("admin_cards.html", data=data)
-    
+
 
 # ---------------------------
 # EXCEL
