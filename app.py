@@ -142,7 +142,6 @@ def ende():
         (
             name,
             buddy,
-            datetime.datetime.now().strftime("%d.%m.%Y %H:%M"),
             (datetime.datetime.now() + datetime.timedelta(hours=2)).strftime("%d.%m.%Y %H:%M"),
             str(answers),
             str(result)
