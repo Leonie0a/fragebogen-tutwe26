@@ -72,48 +72,68 @@ h2 {
     🖨️
 </button>
 
+<style>
+@media print {
+    button {
+        display: none !important;
+    }
+
+    .person {
+        page-break-after: always;
+    }
+
+    .person:last-child {
+        page-break-after: auto;
+    }
+}
+</style>
+
 {% for name, buddy, time, result, answers in data %}
 
-{% set sorted_gods = result.items() | sort(attribute=1, reverse=True) %}
+<div class="person">
 
-<div class="card">
+    {% set sorted_gods = result.items() | sort(attribute=1, reverse=True) %}
 
-    <b>{{ name }}</b><br>
+    <div class="card">
 
-    {% if buddy %}
-        <div class="meta">Buddy: {{ buddy }}</div>
-    {% endif %}
+        <b>{{ name }}</b><br>
 
-    <div class="meta">{{ time }}</div>
+        {% if buddy %}
+            <div class="meta">Buddy: {{ buddy }}</div>
+        {% endif %}
 
-    <!-- 🧠 PROZENTE SORTIERT -->
-    <div style="margin-top:10px;">
-        {% for god, value in sorted_gods %}
-            <div class="god">
-                {{ god }}: {{ value }}%
-            </div>
-        {% endfor %}
-    </div>
+        <div class="meta">{{ time }}</div>
 
-    <!-- 📝 ANTWORTEN -->
-    <div class="answers">
+        <!-- 🧠 PROZENTE SORTIERT -->
+        <div style="margin-top:10px;">
+            {% for god, value in sorted_gods %}
+                <div class="god">
+                    {{ god }}: {{ value }}%
+                </div>
+            {% endfor %}
+        </div>
 
-        {% for q in answers %}
+        <!-- 📝 ANTWORTEN -->
+        <div class="answers">
 
-            <div style="margin-bottom:10px;">
-                <b>{{ q.frage }}</b><br>
+            {% for q in answers %}
 
-                {% for s in q.selected %}
-                    ({{ s.god }}) {{ s.text }}<br>
-                {% endfor %}
-            </div>
+                <div style="margin-bottom:10px;">
+                    <b>{{ q.frage }}</b><br>
 
-        {% endfor %}
+                    {% for s in q.selected %}
+                        ({{ s.god }}) {{ s.text }}<br>
+                    {% endfor %}
+                </div>
+
+            {% endfor %}
+
+        </div>
 
     </div>
 
 </div>
-
+    
 {% endfor %}
 
 </body>
